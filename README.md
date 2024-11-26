@@ -5,123 +5,123 @@
 ![image](https://github.com/user-attachments/assets/7d1987c1-08c3-4fff-9d30-31027b78ef69)
 </div>
 
-## 🌟 Projeto
+## 🌟 Project
 
-Uma implementação avançada de aprendizado por reforço utilizando o algoritmo Q-Learning para resolver o ambiente de Blackjack do Gymnasium, demonstrando técnicas sofisticadas de aprendizado de máquina e estratégias de decisão adaptativas.
+An advanced implementation of reinforcement learning using the Q-Learning algorithm to solve the Gymnasium Blackjack environment, showcasing sophisticated machine learning techniques and adaptive decision-making strategies.
 
-## 📊 Visão Geral Técnica
+## 📊 Technical Overview
 
-### Algoritmo
-- **Técnica**: Q-Learning (Aprendizado por Diferença Temporal)
-- **Ambiente**: OpenAI Gymnasium Blackjack-v1
-- **Objetivo**: Desenvolver uma estratégia ótima para jogar Blackjack
+### Algorithm
+- **Technique**: Q-Learning (Temporal Difference Learning)
+- **Environment**: Gymnasium Blackjack-v1
+- **Objective**: Develop an optimal strategy for playing Blackjack
 
-### 🧠 Características Principais
-- Exploração adaptativa via política épsilon-gulosa
-- Atualização dinâmica da tabela Q
-- Decaimento exponencial da taxa de exploração
-- Tratamento robusto de estados e ações
+### 🧠 Key Features
+- Adaptive exploration via epsilon-greedy policy
+- Dynamic Q-table updates
+- Exponential exploration rate decay
+- Robust handling of states and actions
 
-## 🔬 Componentes Arquiteturais
+## 🔬 Architectural Components
 
 ### `BlackJackQLearningAgent`
-Classe central que encapsula a lógica completa de aprendizado por reforço.
+Core class encapsulating the complete reinforcement learning logic.
 
-#### Hiperparâmetros
-- `epsilon`: Taxa de exploração inicial (0.2)
-- `alpha`: Taxa de aprendizado (0.2)
-- `gamma`: Fator de desconto (0.99)
+#### Hyperparameters
+- `epsilon`: Initial exploration rate (0.2)
+- `alpha`: Learning rate (0.2)
+- `gamma`: Discount factor (0.99)
 
-#### Métodos Chave
-- `get_state_key()`: Conversão de estados
-- `get_action()`: Seleção de ações
-- `update()`: Atualização da política
-- `train()`: Treinamento do agente
+#### Key Methods
+- `get_state_key()`: State conversion
+- `get_action()`: Action selection
+- `update()`: Policy update
+- `train()`: Agent training
 
-## 📈 Métricas e Análise
+## 📈 Metrics and Analysis
 
-### Avaliação de Desempenho
-- Treinamento: 1,000,000 episódios
-- Métricas calculadas:
-  - Taxa de vitória
-  - Taxa de empate
-  - Taxa de derrota
+### Performance Evaluation
+- Training: 1,000,000 episodes
+- Calculated metrics:
+  - Win rate
+  - Draw rate
+  - Loss rate
 
-### Visualização
-- Gráfico de média móvel de recompensas
-- Evolução do aprendizado ao longo dos episódios
+### Visualization
+- Moving average reward graph
+- Learning progression over episodes
 
-## 🚀 Dependências
+## 🚀 Dependencies
 
-### Bibliotecas Utilizadas
-- `gymnasium`: Ambiente de aprendizado por reforço
-- `numpy`: Computações numéricas
-- `pandas`: Manipulação de dados
-- `matplotlib`: Visualização
-- `tqdm`: Progresso de treinamento
+### Libraries Used
+- `gymnasium`: Reinforcement learning environment
+- `numpy`: Numerical computations
+- `pandas`: Data manipulation
+- `matplotlib`: Visualization
+- `tqdm`: Training progress
 
-## 💻 Instalação & Execução
+## 💻 Installation & Execution
 
-### Pré-requisitos
+### Prerequisites
 - Python 3.8+
 - pip
 
-### Instalação
+### Installation
 ```bash
 pip install gymnasium numpy pandas matplotlib tqdm
 ```
 
-## 🧮 Detalhes Matemáticos
+## 🧮 Mathematical Details
 
-### Equação de Atualização Q-Learning
+### Q-Learning Update Equation
 Q(s,a) ← Q(s,a) + α * [R + γ * max(Q(s')) - Q(s,a)]
 
-Onde:
-- Q(s,a): Valor da ação
-- α: Taxa de aprendizado
-- R: Recompensa
-- γ: Fator de desconto
-- max(Q(s')): Máximo valor Q para próximo estado
+Where:
+- Q(s,a): Action value
+- α: Learning rate
+- R: Reward
+- γ: Discount factor
+- max(Q(s')): Maximum Q-value for the next state
 
-## 🔍 Estratégias Implementadas
+## 🔍 Implemented Strategies
 
-### Exploração vs Explotação
-- Política Épsilon-Gulosa
-- Decaimento exponencial de épsilon
-- Exploração inicial vs Explotação progressiva
+### Exploration vs Exploitation
+- **Epsilon-Greedy Policy**: Balances exploration and exploitation.
+- **Exponential epsilon decay**: Gradual reduction in exploration over time.
+- **Initial exploration vs progressive exploitation**: Prioritizes learning in early stages, optimizing decisions in later episodes.
 
-### Tratamento de Estados
-- Suporte a estados com ás utilizável
-- Mapeamento dinâmico de estados para chaves
+### State Handling
+- **Support for usable ace states**: Differentiates between hands with/without a usable ace.
+- **Dynamic state-to-key mapping**: Ensures scalable and efficient state representation.
 
-## 🎲 Demonstração
+## 🎲 Demonstration
 
-### Funcionalidades
-- Treinamento do agente
-- Plotagem de resultados
-- Avaliação de desempenho
-- Modo de visualização de jogos
+### Features
+- **Agent Training**: Learn optimal strategies through extensive training sessions.
+- **Result Plotting**: Visualize performance metrics and learning trends.
+- **Performance Evaluation**: Assess win/loss/draw rates.
+- **Game Visualization Mode**: Replay and observe trained agent decisions.
 
-## 🔬 Análise de Complexidade
+## 🔬 Complexity Analysis
 
-### Espaço
-- O(n): Tabela Q cresce com número de estados únicos
-- Complexidade: Linear com estados explorados
+### Space Complexity
+- **O(n)**: The Q-table expands linearly with the number of unique states encountered.
+- **Growth**: Directly proportional to the diversity of state-action pairs.
 
-### Tempo
-- O(m * k): m = episódios, k = passos por episódio
-- Treinamento: Convergência em ~1,000,000 episódios
+### Time Complexity
+- **O(m * k)**: Training involves `m` episodes, each with an average of `k` steps.
+- **Convergence**: Typically achieved after approximately 1,000,000 episodes, depending on hyperparameters.
 
-## 🦾 Possíveis Extensões
-- Implementar Deep Q-Learning
-- Adicionar função de aproximação de valor
-- Experimentar outros algoritmos de RL
-- Generalizar para outros jogos de casino
+## 🦾 Potential Extensions
+- Implement **Deep Q-Learning** for enhanced scalability.
+- Introduce **value function approximation** to generalize across state spaces.
+- Experiment with **alternative reinforcement learning algorithms** (e.g., SARSA, Policy Gradient).
+- Adapt and generalize the agent for **other casino-style games**.
 
-## 📝 Contribuições
-Pull requests são bem-vindos. Para mudanças importantes, abra um issue primeiro para discutir o que você gostaria de modificar.
+## 📝 Contributions
+Pull requests are welcome. For significant changes, open an issue first to discuss your ideas and proposed modifications.
 
-## 📋 Licença
-[MIT](https://choosealicense.com/licenses/mit/)
+## 📋 License
+This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
 ---
